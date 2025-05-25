@@ -1,4 +1,6 @@
-class Item:
+from abc import ABC, abstractmethod
+
+class Item(ABC):
     """
     Klasa abstrakcyjna, po której dziedziczą klasy Book, Magazine, DVD
     """
