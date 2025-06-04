@@ -5,36 +5,36 @@ from entities.rental import Rental
 
 class Library:
     """
-        A class to represent a library with items, members, and rentals.
+    Klasa reprezentująca bibliotekę zawierającą pozycje, członków i wypożyczenia.
 
-        Attributes:
-            items (List[Item]): List of all items in the library.
-            members (List[Member]): List of all registered members.
-            rentals (List[Rental]): List of current and past rentals.
-            daily_fine_for_overdue_items (float): Daily fine applied to overdue items.
+    Atrybuty:
+        items (List[Item]): Lista wszystkich pozycji znajdujących się w bibliotece.
+        members (List[Member]): Lista wszystkich zarejestrowanych członków.
+        rentals (List[Rental]): Lista bieżących i przeszłych wypożyczeń.
+        daily_fine_for_overdue_items (float): Dzienna kara naliczana za przetrzymane pozycje.
 
-        Methods:
-            add_member(member: Member) -> None:
-                Adds a new member to the library.
+    Metody:
+        add_member(member: Member) -> None:
+            Dodaje nowego członka do biblioteki.
 
-            add_item(item: Item) -> None:
-                Adds a new item to the library's collection.
+        add_item(item: Item) -> None:
+            Dodaje nową pozycję do zbiorów biblioteki.
 
-            get_all_items() -> List[Item]:
-                Returns a list of all items in the library.
+        get_all_items() -> List[Item]:
+            Zwraca listę wszystkich pozycji w bibliotece.
 
-            get_all_available_items() -> List[Item]:
-                Returns a list of items that are currently available for rental.
+        get_all_available_items() -> List[Item]:
+            Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
 
-            get_all_rentals() -> List[Rental]:
-                Returns a list of all rental records.
+        get_all_rentals() -> List[Rental]:
+            Zwraca listę wszystkich rekordów wypożyczeń.
 
-            get_overdue_rentals() -> List[Rental]:
-                Returns a list of rentals that are currently overdue.
+        get_overdue_rentals() -> List[Rental]:
+            Zwraca listę wypożyczeń, które są przeterminowane.
 
-            get_all_members() -> List[Member]:
-                Returns a list of all registered members.
-        """
+        get_all_members() -> List[Member]:
+            Zwraca listę wszystkich zarejestrowanych członków.
+    """
     def __init__(
             self,
             items: List[Item],
