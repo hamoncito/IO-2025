@@ -1,7 +1,10 @@
+from enum import member
 from typing import List
+from collections import Counter
 from entities.item import Item
 from entities.member import Member
 from entities.rental import Rental
+
 
 class Library:
     """
@@ -20,21 +23,22 @@ class Library:
         add_item(item: Item) -> None:
             Dodaje nową pozycję do zbiorów biblioteki.
 
-        get_all_items() -> List[Item]:
-            Zwraca listę wszystkich pozycji w bibliotece.
-
-        get_all_available_items() -> List[Item]:
+        get_all_avalible_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
 
-        get_all_rentals() -> List[Rental]:
-            Zwraca listę wszystkich rekordów wypożyczeń.
+        get_most_popular_creator() -> str:
+            Zwraca nazwę twórcy (np. autora), którego pozycje są najczęściej wypożyczane (niedostępne).
+
+        get_all_member_rented_from_library(member: Member) -> List[Rental]:
+            Zwraca listę wypożyczeń powiązanych z podanym członkiem biblioteki.
 
         get_overdue_rentals() -> List[Rental]:
             Zwraca listę wypożyczeń, które są przeterminowane.
 
-        get_all_members() -> List[Member]:
-            Zwraca listę wszystkich zarejestrowanych członków.
+        get_all_members_with_overdue() -> List[Member]:
+            Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
     """
+
     def __init__(
             self,
             items: List[Item],
@@ -53,17 +57,27 @@ class Library:
     def add_item(self, Item):
         self.items.append(Item)
 
-    def get_all_items(self) -> List[Item]:
-        return self.items
+    def get_most_popular_creator(self) -> str:
+        creator_list = []
+        for item in self.items:
+            if not item.avaliable:
+                creator_list.append(item.get_creator())
+        counter = Counter(creator_list)
+        return counter.most_common(1)[0][0]
 
     def get_all_avalible_items(self) -> List[Item]:
         return [item for item in self.items if item.avaliable]
 
-    def get_all_rentals(self) -> List[Rental]:
-        return self.rentals
+    def get_all_member_rented_from_library(self, member: Member) -> List[Rental]:
+        return [rental for rental in self.rentals if rental.member == member]
 
     def get_overdue_rentals(self) -> List[Rental]:
         return [rental for rental in self.rentals if rental.is_overdue()]
 
-    def get_all_members(self) -> List[Member]:
-        return self.members
+    def get_all_members_with_overdue(self) -> List[Member]:
+        members_list = []
+        for member in self.members:
+            for rental in member.rented_items():
+                if rental.is_overdue():
+                    members_list.append(member)
+        return members_list
