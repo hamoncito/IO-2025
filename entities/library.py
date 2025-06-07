@@ -65,7 +65,7 @@ class Library:
         counter = Counter(creator_list)
         return counter.most_common(1)[0][0]
 
-    def get_all_avalible_items(self) -> List[Item]:
+    def get_all_available_items(self) -> List[Item]:
         return [item for item in self.items if item.avaliable]
 
     def get_all_member_rented_from_library(self, member: Member) -> List[Rental]:
