@@ -24,7 +24,7 @@ class TestMagazine(unittest.TestCase):
         self.assertFalse(self.test_magazine.available)  # magazyn jest niedostępny
 
     def test_mark_available(self):
-        self.assertTrue(self.test_magazine.available) # domyślnie jest dostępna
+        self.assertTrue(self.test_magazine.available) # domyślnie jest dostępny
 
         self.test_magazine.mark_unavailable()
 
