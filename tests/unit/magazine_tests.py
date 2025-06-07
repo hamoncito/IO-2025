@@ -1,6 +1,6 @@
 import unittest
 
-from entities.book import Book
+from entities.magazine import Magazine
 
 
 class TestMagazine(unittest.TestCase):
@@ -17,19 +17,19 @@ class TestMagazine(unittest.TestCase):
         self.assertEqual(creator, "Tomasz Szymański")
 
     def test_mark_unavailable(self):
-        self.assertTrue(self.test_magazine.available)  # domyślnie jest dostępna
+        self.assertTrue(self.test_magazine.available)  # domyślnie jest dostępny
 
         self.test_magazine.mark_unavailable()
 
-        self.assertFalse(self.test_magazine.available)  # książka jest niedostępna
+        self.assertFalse(self.test_magazine.available)  # magazyn jest niedostępny
 
     def test_mark_available(self):
         self.assertTrue(self.test_magazine.available) # domyślnie jest dostępna
 
         self.test_magazine.mark_unavailable()
 
-        self.assertFalse(self.test_magazine.available) # książka jest niedostępna
+        self.assertFalse(self.test_magazine.available) # magazyn jest niedostępny
 
         self.test_magazine.mark_available()
 
-        self.assertTrue(self.test_magazine.available) # książka jest dostępna
+        self.assertTrue(self.test_magazine.available) # magazyn jest dostępny
