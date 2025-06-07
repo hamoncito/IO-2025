@@ -15,11 +15,11 @@ from datetime import date
         
     Metody:
         is_overdue():
-        
+            Sprawdza czy dane wypożyczenie przekroczyło czas możliwego wypożyczenia
         mark_returned():
-        
+            Metoda, która zwraca informacje, że wskazany przedmiot jest dostępny (Został zwrócony)
         calculate_return_date():
-    
+            Kalkulacja, pozwalająca na ustalenie kary pieniężnej, w przypadku przedmiotu zwróconego za późno.
 """
 
 class Rental(Item):
