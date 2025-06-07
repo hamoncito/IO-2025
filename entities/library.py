@@ -23,7 +23,7 @@ class Library:
         add_item(item: Item) -> None:
             Dodaje nową pozycję do zbiorów biblioteki.
 
-        get_all_avalible_items() -> List[Item]:
+        get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
 
         get_most_popular_creator() -> str:
