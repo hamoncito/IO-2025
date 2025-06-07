@@ -57,7 +57,7 @@ Na koniec dnia bibliotekarz wywołuje metodę `get_overdue_rentals`, aby uzyska�
 Bibliotekarz analizuje aktywność członka: jakie pozycje są obecnie przez niego wypożyczone, czy posiada zaległości. Klasa `Member` pozwala wygodnie zarządzać wypożyczeniami danego użytkownika i śledzić przekroczenia terminów.
 
 ### Scenariusz 4: Generowanie raportu stanu zasobów
-System może w każdej chwili zwrócić listę wszystkich dostępnych pozycji (`get_all_avalible_items`) oraz historii wszystkich wypożyczeń (`get_all_rentals`). Dane te mogą zostać użyte do tworzenia miesięcznych raportów bibliotecznych.
+System może w każdej chwili zwrócić listę wszystkich dostępnych pozycji (`get_all_available_items`) oraz historii wszystkich wypożyczeń (`get_all_rentals`). Dane te mogą zostać użyte do tworzenia miesięcznych raportów bibliotecznych.
 
 ## Licencja
 Projekt edukacyjny. Do użytku dydaktycznego oraz jako baza do rozbudowy i dalszego rozwoju.
