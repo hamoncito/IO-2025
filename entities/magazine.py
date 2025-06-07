@@ -1,7 +1,7 @@
 from entities.item import Item
 
 """
-   Klasa dziedzicząca po klasie Item (pozycja) reprezentująca książkę.
+   Klasa dziedzicząca po klasie Item (pozycja) reprezentująca magazyn.
 
    Atrybuty:
        id (str): Identyfikator magazynu.
