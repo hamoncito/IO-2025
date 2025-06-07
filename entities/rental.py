@@ -4,7 +4,7 @@ from datetime import date
 
 
 """
-    Klasa, która reprezentuje wypożyczenie przedmiotów (Książek, magazynów czy DVD dla pewnych użytkowników.
+    Klasa, która reprezentuje wypożyczenie przedmiotów (książek, magazynów czy DVD) dla pewnych użytkowników.
     
     Atrybuty:
         item (Item): Klasa przedmiotu dostępnego do wypożyczenia
