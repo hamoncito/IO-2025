@@ -93,6 +93,5 @@ class Library:
     def get_all_rented_items(self) -> List[Item]:
         rented_items = []
         for rental in self.rentals:
-            for item in rental.item:
-                rented_items.append(item)
+            rented_items.append(rental.item)
         return rented_items
