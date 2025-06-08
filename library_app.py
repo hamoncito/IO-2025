@@ -90,7 +90,7 @@ if __name__ == "__main__":
                               "\nRomance"
                               "\nAnimation\n")
 
-                genre = Genre(genre)
+                genre = Genre[genre.upper()]
 
                 id = next(id_iter)
                 dvd = Dvd(
