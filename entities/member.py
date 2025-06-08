@@ -1,6 +1,6 @@
+from __future__ import annotations
 from datetime import datetime, timedelta
 from typing import List
-from entities.rental import Rental
 from entities.item import Item
 
 class Member:
@@ -32,7 +32,7 @@ class Member:
                  name: str,
                  last_name: str,
                  email: str,
-                 rented_items: List[Rental]
+                 rented_items: List["Rental"]
                  ):
         self.member_id = member_id
         self.name = name
@@ -40,7 +40,8 @@ class Member:
         self.email = email
         self.rented_items = rented_items
 
-    def borrow_item(self, item: Item) -> None:
+    def borrow_item(self, item: Item) -> "Rental":
+        from entities.rental import Rental
         if item.available:
             rental = Rental(
                 item = item,
@@ -48,10 +49,12 @@ class Member:
                 rent_date = datetime.now(),
                 return_date = datetime.now() + timedelta(days=31))
             self.rented_items.append(rental)
+            item.available = False
+            return rental
         else:
-            print("Pozycja jest niedostępna")
+            raise NameError("Pozycja jest niedostępna")
 
-    def return_item(self, rental: Rental) -> None:
+    def return_item(self, rental: "Rental") -> None:
         if rental.returned:
             print("Pozycja została już zwrócona")
         else:
@@ -61,5 +64,5 @@ class Member:
             rental.mark_returned()
             self.rented_items.remove(rental)
 
-    def get_overdue_rentals(self) -> List[Rental]:
+    def get_overdue_rentals(self) -> List["Rental"]:
         return [rental for rental in self.rented_items if rental.is_overdue()]

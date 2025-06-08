@@ -22,6 +22,9 @@ class Library:
         add_item(item: Item) -> None:
             Dodaje nową pozycję do zbiorów biblioteki.
 
+        add_rental(rental: Rental) -> None:
+            Dodaje nowe wypożyczenie do biblioteki.
+
         get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
 
@@ -50,11 +53,14 @@ class Library:
         self.rentals = rentals
         self.daily_fine_for_overdue_items = daily_fine_for_overdue_items
 
-    def add_member(self, member):
+    def add_member(self, member) -> None:
         self.members.append(member)
 
-    def add_item(self, item):
+    def add_item(self, item) -> None:
         self.items.append(item)
+
+    def add_rental(self, rental) -> None:
+        self.rentals.append(rental)
 
     def get_most_popular_creator(self) -> str:
         creator_list = []

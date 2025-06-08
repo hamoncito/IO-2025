@@ -155,12 +155,13 @@ if __name__ == "__main__":
             item = next((item for item in user_library.items if item.id == user_input_item_id), None)
             member = next((member for member in user_library.members if member.member_id == user_input_member_id), None)
 
-            user_library = member.borrow_item(item)
+            new_rental = member.borrow_item(item)
+            user_library.add_rental(new_rental)
             print(member.rented_items)
 
-            print(f"{member.name} {member.last_name} wypożyczył {item.title}"
-                  f"Data wypożyczenia: {user_library.rentals[-1].rent_date}"
-                  f"Data oddania: {user_library.rentals[-1].return_date}")
+            print(f"{member.name} {member.last_name} wypożyczył {item.title}")
+            print(f"Data wypożyczenia: {user_library.rentals[-1].rent_date}")
+            print(f"Data oddania: {user_library.rentals[-1].return_date}")
 
 
         elif user_input == "4":
