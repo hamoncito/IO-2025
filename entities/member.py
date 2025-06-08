@@ -42,7 +42,11 @@ class Member:
 
     def borrow_item(self, item: Item) -> None:
         if item.available:
-            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31))
+            rental = Rental(
+                item = item,
+                member = self,
+                rent_date = datetime.now(),
+                return_date = datetime.now() + timedelta(days=31))
             self.rented_items.append(rental)
         else:
             print("Pozycja jest niedostępna")

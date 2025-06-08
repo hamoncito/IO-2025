@@ -152,12 +152,11 @@ if __name__ == "__main__":
 
             user_input_item_id = int(input("Podaj ID pozycji: "))
 
-            if user_input_item_id > len(user_library.items) or user_input_member_id > len(user_library.members):
-                raise ValueError("Podano niepoprawne ID")
-            member = user_library.members[user_input_member_id]
-            item = user_library.items[user_input_item_id]
+            item = next((item for item in user_library.items if item.id == user_input_item_id), None)
+            member = next((member for member in user_library.members if member.member_id == user_input_member_id), None)
 
-            member.borrow_item(item)
+            user_library = member.borrow_item(item)
+            print(member.rented_items)
 
             print(f"{member.name} {member.last_name} wypożyczył {item.title}"
                   f"Data wypożyczenia: {user_library.rentals[-1].rent_date}"
