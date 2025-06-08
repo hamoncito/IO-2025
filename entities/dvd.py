@@ -20,13 +20,13 @@ from enum import Enum
    """
 
 class Genre(Enum):
-    ACTION = "Action",
-    COMEDY = "Comedy",
-    THRILLER = "Thriller",
-    HORROR = "Horror",
-    SCIENCE_FICTION= "Science Fiction",
-    DOCUMENTARY = "Documentary",
-    ROMANCE = "Romance",
+    ACTION = "Action"
+    COMEDY = "Comedy"
+    THRILLER = "Thriller"
+    HORROR = "Horror"
+    SCIENCE_FICTION= "Science Fiction"
+    DOCUMENTARY = "Documentary"
+    ROMANCE = "Romance"
     ANIMATION = "Animation"
 
 class Dvd(Item):
