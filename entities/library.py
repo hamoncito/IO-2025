@@ -23,10 +23,11 @@ class Library:
             Dodaje nową pozycję do zbiorów biblioteki.
 
         add_rental(member: Member, item: Item) -> None:
-            Dodaje nowe wypożyczenie do biblioteki dla konkretnego użytkownika.
+            Dodaje nowe wypożyczenie do biblioteki dla konkretnego członka - członek wypożyczył pozycję.
 
         remove_rental(rental: Rental, member: Member) -> None:
-            Usuwa wypożyczenie z biblioteki dla konkretnego użytkownika.
+            Usuwa wypożyczenie z biblioteki dla konkretnego członka - członek zwrócił wypożyczoną pozycję.
+            Funkcja wylicza również karę, którą członek musi zapłacić za przekroczenie terminu oddania pozycji.
 
         get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
