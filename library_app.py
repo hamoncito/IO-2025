@@ -7,10 +7,10 @@ from entities.magazine import Magazine
 from entities.member import Member
 
 if __name__ == "__main__":
+    id_iter = itertools.count()
 
     while True:
         user_library = Library()
-        id_iter = itertools.count()
 
         print("\n System wypożyczalni mediów w bibliotece")
         print("1. Dodaj pozycję")
