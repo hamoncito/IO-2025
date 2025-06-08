@@ -56,8 +56,8 @@ class Library:
     def get_all_items(self) -> List[Item]:
         return self.items
 
-    def get_all_avalible_items(self) -> List[Item]:
-        return [item for item in self.items if item.avaliable]
+    def get_all_available_items(self) -> List[Item]:
+        return [item for item in self.items if item.available]
 
     def get_all_rentals(self) -> List[Rental]:
         return self.rentals
