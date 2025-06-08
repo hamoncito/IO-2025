@@ -30,10 +30,22 @@ class Genre(Enum):
     ANIMATION = "Animation"
 
 class Dvd(Item):
-    def __init__(self, id: str, title: str, year: int, director: str, genre: Genre):
+    def __init__(self, id: str, title: str, year: int, director: str, genre: Genre, length_in_minutes: int):
         super().__init__(id, title, year)
         self.director = director
         self.genre = genre
+        self.length_in_minutes = length_in_minutes
 
     def get_creator(self) -> str:
         return self.director
+
+    def show_movie_length(self) -> str:
+        hours = int(self.length_in_minutes/60)
+        minutes = self.length_in_minutes - hours * 60
+
+        if hours == 1:
+            return f"Film trwa {hours} godzinę i {minutes} minut."
+        if hours in (2, 3, 4):
+            return f"Film trwa {hours} godziny i {minutes} minut."
+        else:
+            return f"Film trwa {minutes} minut."
