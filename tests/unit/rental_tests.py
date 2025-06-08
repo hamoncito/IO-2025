@@ -1,7 +1,5 @@
 import unittest
 from datetime import date, timedelta
-from unittest.mock import Mock
-
 from entities.book import Book
 from entities.member import Member
 from entities.rental import Rental
@@ -35,12 +33,8 @@ class TestRental(unittest.TestCase):
 
     def test_is_overdue_false_when_already_returned(self):
         rental = Rental(self.book, self.member, self.today, self.past_date)
-        rental.returned = True
-        self.assertFalse(rental.is_overdue())
-
-    def test_mark_returned_sets_returned_to_true_and_marks_item_available(self):
-        rental = Rental(self.book, self.member, self.today, self.future_date)
         rental.mark_returned()
+        self.assertFalse(rental.is_overdue())
         self.assertTrue(rental.returned)
 
     def test_calculate_overdue_charge_zero_when_not_overdue(self):
@@ -60,7 +54,3 @@ class TestRental(unittest.TestCase):
         rental.mark_returned()
         fine = rental.calculate_overdue_charge(daily_fine_for_overdue_items=2.0)
         self.assertEqual(fine, 0.0)
-
-
-if __name__ == "__main__":
-    unittest.main()
