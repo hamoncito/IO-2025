@@ -14,11 +14,12 @@ class Rental:
 
         Metody:
             is_overdue() -> Boolean:
-                Sprawdza czy dane wypożyczenie przekroczyło czas możliwego wypożyczenia
+                Sprawdza czy dane wypożyczenie przekroczyło termin zwrotu pozycji.
             mark_returned() -> None:
                 Metoda, która zwraca informacje, że wskazany przedmiot jest dostępny (Został zwrócony)
             calculate_return_date(daily_fine_for_overdue_items: Float = 2.0) -> Float:
                 Kalkulacja, pozwalająca na ustalenie kary pieniężnej, w przypadku przedmiotu zwróconego za późno.
+                Domyślna wartość kary za dzień opóźnienia to 2.
     """
 
     def __init__(self, item, member, rent_date: date, return_date: date):

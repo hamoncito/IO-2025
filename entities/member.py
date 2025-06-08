@@ -10,7 +10,7 @@ class Member:
         name (str): Imię członka.
         last_name (str): Nazwisko członka.
         email (str): Adres e-mail członka.
-        rented_items (List[Rental]): Lista aktualnie wypożyczonych pozycji.
+        rented_items (List[Rental]): Lista aktualnie wypożyczonych pozycji przez członka.
 
     Metody:
         get_overdue_rentals() -> List[Rental]:
