@@ -147,9 +147,7 @@ def borrow_item() -> None:
     item = next((item for item in user_library.items if item.id == user_input_item_id), None)
     member = next((member for member in user_library.members if member.member_id == user_input_member_id), None)
 
-    new_rental = member.borrow_item(item)
-    user_library.add_rental(new_rental)
-    print(member.rented_items)
+    user_library.add_rental(item, member)
 
     print(f"{member.name} {member.last_name} wypożyczył {item.title}")
     print(f"Data wypożyczenia: {user_library.rentals[-1].rent_date}")
@@ -175,8 +173,7 @@ def return_book() -> None:
 
     for rental in member.rented_items:
         if rental.item == item_to_return:
-            member.return_item(rental)
-            user_library.remove_rental(rental)
+            user_library.remove_rental(rental, member)
             print(f"{member.name} {member.last_name} zwrócił {item_to_return.title}")
             if rental.is_overdue():
                 print(

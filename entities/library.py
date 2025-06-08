@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from typing import List
 from entities.item import Item
 from entities.member import Member
@@ -58,11 +59,30 @@ class Library:
     def add_item(self, item) -> None:
         self.items.append(item)
 
-    def add_rental(self, rental) -> None:
-        self.rentals.append(rental)
+    def add_rental(self, item, member) -> Rental:
+        if item.available:
+            rental = Rental(
+                item = item,
+                member = member,
+                rent_date = datetime.now(),
+                return_date = datetime.now() + timedelta(days=31))
+            member.rented_items.append(rental)
+            self.rentals.append(rental)
+            item.available = False
+            return rental
+        else:
+            raise NameError("Pozycja jest niedostępna")
 
-    def remove_rental(self, rental) -> None:
-        self.rentals.remove(rental)
+    def remove_rental(self, rental, member) -> None:
+        if rental.returned:
+            print("Pozycja została już zwrócona")
+        else:
+            if rental.is_overdue():
+                charge = rental.calculate_overdue_charge()
+                print(f"W związku z opóźnieniem członek biblioteki {member.name} {member.last_name} musi zapłacić {charge} zł!")
+            rental.mark_returned()
+            self.rentals.remove(rental)
+            member.rented_items.remove(rental)
 
     def get_all_available_items(self) -> List[Item]:
         return [item for item in self.items if item.available]
