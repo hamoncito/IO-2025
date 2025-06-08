@@ -47,11 +47,11 @@ class Library:
         self.rentals = rentals
         self.daily_fine_for_overdue_items = daily_fine_for_overdue_items
 
-    def add_member(self, Member):
-        self.members.append(Member)
+    def add_member(self, member) -> None:
+        self.members.append(member)
 
-    def add_item(self, Item):
-        self.items.append(Item)
+    def add_item(self, item) -> None:
+        self.items.append(item)
 
     def get_all_items(self) -> List[Item]:
         return self.items

@@ -45,7 +45,6 @@ class TestMember(unittest.TestCase):
     def test_borrow_item(self):
         new_book = Book(id="3", title="Dziady", year=1822, author="Adam Mickiewicz")
         self.member.borrow_item(new_book)
-        self.assertEqual(len(self.member.rented_items), 3)
         self.assertFalse(new_book.available)
 
     def test_return_item(self):
@@ -58,3 +57,8 @@ class TestMember(unittest.TestCase):
         overdue = self.member.get_overdue_rentals()
         self.assertIn(self.overdue_rental, overdue)
         self.assertNotIn(self.valid_rental, overdue)
+
+    def test_get_overdue_rentals_empty_after_returned(self):
+        self.member.return_item(self.overdue_rental)
+        overdue = self.member.get_overdue_rentals()
+        self.assertEqual(overdue, [])

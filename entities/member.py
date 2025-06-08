@@ -1,10 +1,9 @@
+from __future__ import annotations
 from datetime import datetime, timedelta
 from typing import List
-from entities.rental import Rental
 from entities.item import Item
 
-class Member:
-    """
+"""
     Klasa reprezentująca członka biblioteki.
 
     Atrybuty:
@@ -27,12 +26,13 @@ class Member:
         get_overdue_rentals() -> List[Rental]:
             Zwraca listę wypożyczeń, które są przeterminowane według daty zwrotu.
     """
+class Member:
     def __init__(self,
                  member_id: str,
                  name: str,
                  last_name: str,
                  email: str,
-                 rented_items: List[Rental]
+                 rented_items: List["Rental"]
                  ):
         self.member_id = member_id
         self.name = name
@@ -41,13 +41,15 @@ class Member:
         self.rented_items = rented_items
 
     def borrow_item(self, item: Item) -> None:
+        from entities.rental import Rental
         if item.available:
-            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31), returned = False)
+            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31), returned=False)
             self.rented_items.append(rental)
+            item.available = False
         else:
             print("Pozycja jest niedostępna")
 
-    def return_item(self, rental: Rental) -> None:
+    def return_item(self, rental: "Rental") -> None:
         if rental.returned:
             print("Pozycja została już zwrócona")
         else:
@@ -57,5 +59,5 @@ class Member:
             rental.mark_returned()
             self.rented_items.remove(rental)
 
-    def get_overdue_rentals(self) -> List[Rental]:
+    def get_overdue_rentals(self) -> List["Rental"]:
         return [rental for rental in self.rented_items if rental.is_overdue()]
