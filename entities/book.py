@@ -4,7 +4,7 @@ from entities.item import Item
    Klasa dziedzicząca po klasie Item (pozycja) reprezentująca książkę.
 
    Atrybuty:
-       id (str): Identyfikator książki.
+       id (int): Identyfikator książki.
        title (str): Tytuł książki.
        year (int): Rok wydania książki.
        author (str): Autor książki.
@@ -14,7 +14,7 @@ from entities.item import Item
            Zwraca autora książki.
    """
 class Book(Item):
-    def __init__(self, id: str, title: str, year: int, author: str):
+    def __init__(self, id: int, title: str, year: int, author: str):
         super().__init__(id, title, year)
         self.author = author
 

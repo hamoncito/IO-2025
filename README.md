@@ -44,6 +44,10 @@ Projekt opiera się na standardowej bibliotece Pythona. Wykorzystywane moduły t
 - `abc`
 - `typing`
 - `datetime`
+- `itertools`
+- `__future__`
+- `unittest`
+- `enum`
 
 ## Scenariusze użycia
 

@@ -57,6 +57,6 @@ class TestDvd(unittest.TestCase):
         self.assertEqual(self.test_dvd.genre.value, "Animation")
 
     def test_show_movie_length(self):
-        self.assertEqual(self.test_dvd.show_movie_length(), "Film trwa 1 godzinę i 28 minut.")
-        self.assertEqual(self.test_dvd_2_hours.show_movie_length(), "Film trwa 2 godziny i 15 minut.")
-        self.assertEqual(self.test_dvd_less_than_hour.show_movie_length(), "Film trwa 57 minut.")
+        self.assertEqual(self.test_dvd.show_movie_length(), "Film trwa 1 godzinę i 28 min.")
+        self.assertEqual(self.test_dvd_2_hours.show_movie_length(), "Film trwa 2 godziny i 15 min.")
+        self.assertEqual(self.test_dvd_less_than_hour.show_movie_length(), "Film trwa 57 min.")
