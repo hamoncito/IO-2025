@@ -49,7 +49,7 @@ Projekt opiera się na standardowej bibliotece Pythona. Wykorzystywane moduły t
 - `unittest`
 - `enum`
 ## Diagram UML
-![diagram uml](https://github.com/hamoncito/IO-2025/blob/main/diagram-uml.png?raw=true)
+![diagram uml](https://github.com/hamoncito/IO-2025/blob/main/diagram.png?raw=true)
 
 
 
