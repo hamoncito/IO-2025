@@ -10,18 +10,9 @@ class Member:
         name (str): Imię członka.
         last_name (str): Nazwisko członka.
         email (str): Adres e-mail członka.
-        rented_items (List[Rental]): Lista aktualnie wypożyczonych pozycji.
+        rented_items (List[Rental]): Lista aktualnie wypożyczonych pozycji przez członka.
 
     Metody:
-        borrow_item(item: Item) -> None:
-            Tworzy nowe wypożyczenie dla podanej pozycji z datą wypożyczenia od dziś i terminem zwrotu za 31 dni.
-            Dodaje wypożyczenie do listy wypożyczonych pozycji.
-
-        return_item(rental: Rental) -> None:
-            Zwraca wypożyczoną pozycję. Jeśli wypożyczenie jest przeterminowane, oblicza opłatę
-            i wyświetla komunikat o konieczności jej uiszczenia. Zaznacza pozycję jako zwróconą
-            i usuwa ją z listy wypożyczonych pozycji.
-
         get_overdue_rentals() -> List[Rental]:
             Zwraca listę wypożyczeń, które są przeterminowane według daty zwrotu.
     """

@@ -22,11 +22,12 @@ class Library:
         add_item(item: Item) -> None:
             Dodaje nową pozycję do zbiorów biblioteki.
 
-        add_rental(rental: Rental) -> None:
-            Dodaje nowe wypożyczenie do biblioteki.
+        add_rental(member: Member, item: Item) -> None:
+            Dodaje nowe wypożyczenie do biblioteki dla konkretnego członka - członek wypożyczył pozycję.
 
-        remove_rental(rental: Rental) -> None:
-            Usuwa wypożyczenie z biblioteki.
+        remove_rental(rental: Rental, member: Member) -> None:
+            Usuwa wypożyczenie z biblioteki dla konkretnego członka - członek zwrócił wypożyczoną pozycję.
+            Funkcja wylicza również karę, którą członek musi zapłacić za przekroczenie terminu oddania pozycji.
 
         get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
@@ -37,8 +38,8 @@ class Library:
         get_all_members_with_overdue() -> List[Member]:
             Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
 
-        get_all_members_with_overdue() -> List[Member]:
-            Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
+        get_all_rented_items() -> List[Item]:
+            Zwraca listę pozycji biblioteki, którzy są obecnie wypożyczone.
     """
 
     def __init__(
@@ -59,17 +60,16 @@ class Library:
     def add_item(self, item) -> None:
         self.items.append(item)
 
-    def add_rental(self, item, member) -> Rental:
+    def add_rental(self, item, member) -> None:
         if item.available:
             rental = Rental(
-                item = item,
-                member = member,
-                rent_date = datetime.now(),
-                return_date = datetime.now() + timedelta(days=31))
+                item=item,
+                member=member,
+                rent_date=datetime.now(),
+                return_date=datetime.now() + timedelta(days=31))
             member.rented_items.append(rental)
             self.rentals.append(rental)
             item.available = False
-            return rental
         else:
             raise NameError("Pozycja jest niedostępna")
 
@@ -79,7 +79,8 @@ class Library:
         else:
             if rental.is_overdue():
                 charge = rental.calculate_overdue_charge()
-                print(f"W związku z opóźnieniem członek biblioteki {member.name} {member.last_name} musi zapłacić {charge} zł!")
+                print(
+                    f"W związku z opóźnieniem członek biblioteki {member.name} {member.last_name} musi zapłacić {charge} zł!")
             rental.mark_returned()
             self.rentals.remove(rental)
             member.rented_items.remove(rental)

@@ -1,6 +1,6 @@
 import unittest
 from datetime import timedelta, datetime
-from entities.book import Book
+from entities.items.book import Book
 from entities.member import Member
 from entities.rental import Rental
 
@@ -26,7 +26,6 @@ class TestMember(unittest.TestCase):
         )
         self.book1.mark_unavailable()
 
-        # Aktualne wypożyczenie
         self.valid_rental = Rental(
             item = self.book2,
             member = self.member,

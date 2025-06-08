@@ -48,6 +48,10 @@ Projekt opiera się na standardowej bibliotece Pythona. Wykorzystywane moduły t
 - `__future__`
 - `unittest`
 - `enum`
+## Diagram UML
+![diagram uml](https://github.com/hamoncito/IO-2025/blob/main/diagram.png?raw=true)
+
+
 
 ## Scenariusze użycia
 

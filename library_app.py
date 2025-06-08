@@ -1,7 +1,7 @@
-from entities.book import Book
-from entities.dvd import Dvd, Genre
+from entities.items.book import Book
+from entities.items.dvd import Dvd, Genre
 from entities.library import Library
-from entities.magazine import Magazine
+from entities.items.magazine import Magazine
 from entities.member import Member
 import itertools
 

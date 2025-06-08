@@ -1,6 +1,6 @@
 import unittest
 
-from entities.magazine import Magazine
+from entities.items.magazine import Magazine
 
 
 class TestMagazine(unittest.TestCase):

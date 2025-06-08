@@ -1,6 +1,6 @@
 import unittest
 
-from entities.dvd import Dvd, Genre
+from entities.items.dvd import Dvd, Genre
 
 class TestDvd(unittest.TestCase):
     def setUp(self):
