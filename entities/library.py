@@ -24,6 +24,9 @@ class Library:
         add_rental(rental: Rental) -> None:
             Dodaje nowe wypożyczenie do biblioteki.
 
+        remove_rental(rental: Rental) -> None:
+            Usuwa wypożyczenie z biblioteki.
+
         get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
 
@@ -57,6 +60,9 @@ class Library:
 
     def add_rental(self, rental) -> None:
         self.rentals.append(rental)
+
+    def remove_rental(self, rental) -> None:
+        self.rentals.remove(rental)
 
     def get_all_available_items(self) -> List[Item]:
         return [item for item in self.items if item.available]

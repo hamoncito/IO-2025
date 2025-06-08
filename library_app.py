@@ -176,6 +176,7 @@ def return_book() -> None:
     for rental in member.rented_items:
         if rental.item == item_to_return:
             member.return_item(rental)
+            user_library.remove_rental(rental)
             print(f"{member.name} {member.last_name} zwrócił {item_to_return.title}")
             if rental.is_overdue():
                 print(
