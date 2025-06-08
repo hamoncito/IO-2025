@@ -37,8 +37,8 @@ class Library:
         get_all_members_with_overdue() -> List[Member]:
             Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
 
-        get_all_members_with_overdue() -> List[Member]:
-            Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
+        get_all_rented_items() -> List[Item]:
+            Zwraca listę pozycji biblioteki, którzy są obecnie wypożyczone.
     """
 
     def __init__(
