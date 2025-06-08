@@ -1,7 +1,4 @@
-from entities.item import Item
-from entities.member import Member
 from datetime import date
-
 
 """
     Klasa, która reprezentuje wypożyczenie przedmiotów (książek, magazynów czy DVD) dla pewnych użytkowników.
@@ -23,12 +20,12 @@ from datetime import date
 """
 
 class Rental:
-    def __init__(self, item: Item, member: Member, rent_date: date, return_date: date, returned: bool = False):
+    def __init__(self, item, member, rent_date: date, return_date: date):
         self.item = item
         self.member = member
         self.rent_date = rent_date
         self.return_date = return_date
-        self.returned = returned
+        self.returned = False
 
     def is_overdue(self) -> bool:
         if self.returned:
