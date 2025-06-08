@@ -40,14 +40,15 @@ class Member:
         self.email = email
         self.rented_items = rented_items
 
-    def borrow_item(self, item: Item) -> None:
+    def borrow_item(self, item: Item) -> "Rental":
         from entities.rental import Rental
         if item.available:
-            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31), returned=False)
+            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31))
             self.rented_items.append(rental)
             item.available = False
+            return rental
         else:
-            print("Pozycja jest niedostępna")
+            raise NameError("Pozycja jest niedostępna")
 
     def return_item(self, rental: "Rental") -> None:
         if rental.returned:
