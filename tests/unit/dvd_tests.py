@@ -1,6 +1,6 @@
 import unittest
 
-from entities.dvd import Dvd
+from entities.dvd import Dvd, Genre
 
 class TestDvd(unittest.TestCase):
     def setUp(self):
@@ -9,7 +9,7 @@ class TestDvd(unittest.TestCase):
             title="Król lew",
             year=1994,
             director="Roger Allers",
-            genre="animacja"
+            genre=Genre.ANIMATION
         )
 
     def test_get_creator(self):
@@ -35,4 +35,4 @@ class TestDvd(unittest.TestCase):
         self.assertTrue(self.test_dvd.available) # dvd jest dostępne
 
     def test_get_genre(self):
-        self.assertEqual(self.test_dvd.get_genre(), "animacja")
+        self.assertEqual(self.test_dvd.genre.value, "Animation")

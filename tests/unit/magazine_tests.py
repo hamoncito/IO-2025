@@ -9,7 +9,7 @@ class TestMagazine(unittest.TestCase):
             id="1",
             title="Życie na gorąco",
             year=1999,
-            author="Tomasz Szymański",
+            editor="Tomasz Szymański",
         )
 
     def test_get_creator(self):
