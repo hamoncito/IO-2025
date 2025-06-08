@@ -20,11 +20,11 @@ class Item(ABC):
             Oznacza pozycję jako dostępną.
     """
 
-    def __init__(self, id: str, title: str, year: int):
+    def __init__(self, id: str, title: str, year: int, available: bool = True):
         self.id = id
         self.title = title
         self.year = year
-        self.available = True
+        self.available = available
 
     @abstractmethod
     def get_creator(self) -> str:
