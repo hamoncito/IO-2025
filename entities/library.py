@@ -28,14 +28,11 @@ class Library:
         get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
 
-        get_most_popular_creator() -> str:
-            Zwraca nazwę twórcy (np. autora), którego pozycje są najczęściej wypożyczane (niedostępne).
-
-        get_all_member_rented_from_library(member: Member) -> List[Rental]:
-            Zwraca listę wypożyczeń powiązanych z podanym członkiem biblioteki.
-
         get_overdue_rentals() -> List[Rental]:
             Zwraca listę wypożyczeń, które są przeterminowane.
+
+        get_all_members_with_overdue() -> List[Member]:
+            Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
 
         get_all_members_with_overdue() -> List[Member]:
             Zwraca listę członków biblioteki, którzy mają przeterminowane wypożyczenia.
@@ -64,9 +61,6 @@ class Library:
 
     def get_all_available_items(self) -> List[Item]:
         return [item for item in self.items if item.available]
-
-    def get_all_member_rented_from_library(self, member: Member) -> List[Rental]:
-        return [rental for rental in self.rentals if rental.member == member]
 
     def get_overdue_rentals(self) -> List[Rental]:
         return [rental for rental in self.rentals if rental.is_overdue()]
