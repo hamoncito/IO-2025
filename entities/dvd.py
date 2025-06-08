@@ -44,8 +44,8 @@ class Dvd(Item):
         minutes = self.length_in_minutes - hours * 60
 
         if hours == 1:
-            return f"Film trwa {hours} godzinę i {minutes} minut."
+            return f"Film trwa {hours} godzinę i {minutes} min."
         if hours in (2, 3, 4):
-            return f"Film trwa {hours} godziny i {minutes} minut."
+            return f"Film trwa {hours} godziny i {minutes} min."
         else:
-            return f"Film trwa {minutes} minut."
+            return f"Film trwa {minutes} min."
