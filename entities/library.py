@@ -12,7 +12,7 @@ class Library:
         items (List[Item]): Lista wszystkich pozycji znajdujących się w bibliotece.
         members (List[Member]): Lista wszystkich zarejestrowanych członków.
         rentals (List[Rental]): Lista bieżących i przeszłych wypożyczeń.
-        daily_fine_for_overdue_items (float): Dzienna kara naliczana za przetrzymane pozycje.
+        daily_fine_for_overdue_items (float) = 2.0: Dzienna kara naliczana za przetrzymane pozycje.
 
     Metody:
         add_member(member: Member) -> None:
