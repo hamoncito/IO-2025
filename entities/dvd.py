@@ -5,7 +5,7 @@ from enum import Enum
    Klasa dziedzicząca po klasie Item (pozycja) reprezentująca płytę DVD.
 
    Atrybuty:
-       id (str): Identyfikator płyty DVD.
+       id (int): Identyfikator płyty DVD.
        title (str): Rok produkcji filmu.
        year (int): Rok wydania płyty DVD.
        director (str): Reżyser filmu.
@@ -30,7 +30,7 @@ class Genre(Enum):
     ANIMATION = "Animation"
 
 class Dvd(Item):
-    def __init__(self, id: str, title: str, year: int, director: str, genre: Genre, length_in_minutes: int):
+    def __init__(self, id: int, title: str, year: int, director: str, genre: Genre, length_in_minutes: int):
         super().__init__(id, title, year)
         self.director = director
         self.genre = genre

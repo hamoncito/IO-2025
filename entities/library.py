@@ -1,4 +1,3 @@
-from enum import member
 from typing import List
 from collections import Counter
 from entities.item import Item
@@ -41,32 +40,32 @@ class Library:
 
     def __init__(
             self,
-            items: List[Item],
-            members: List[Member],
-            rentals: List[Rental],
-            daily_fine_for_overdue_items: float
+            items: List[Item] = [],
+            members: List[Member] = [],
+            rentals: List[Rental] = [],
+            daily_fine_for_overdue_items: float = 2.0
     ):
         self.items = items
         self.members = members
         self.rentals = rentals
         self.daily_fine_for_overdue_items = daily_fine_for_overdue_items
 
-    def add_member(self, Member):
-        self.members.append(Member)
+    def add_member(self, member):
+        self.members.append(member)
 
-    def add_item(self, Item):
-        self.items.append(Item)
+    def add_item(self, item):
+        self.items.append(item)
 
     def get_most_popular_creator(self) -> str:
         creator_list = []
         for item in self.items:
-            if not item.avaliable:
+            if not item.available:
                 creator_list.append(item.get_creator())
         counter = Counter(creator_list)
         return counter.most_common(1)[0][0]
 
     def get_all_available_items(self) -> List[Item]:
-        return [item for item in self.items if item.avaliable]
+        return [item for item in self.items if item.available]
 
     def get_all_member_rented_from_library(self, member: Member) -> List[Rental]:
         return [rental for rental in self.rentals if rental.member == member]
@@ -77,7 +76,14 @@ class Library:
     def get_all_members_with_overdue(self) -> List[Member]:
         members_list = []
         for member in self.members:
-            for rental in member.rented_items():
+            for rental in member.rented_items:
                 if rental.is_overdue():
                     members_list.append(member)
         return members_list
+
+    def get_all_rented_items(self) -> List[Item]:
+        rented_items = []
+        for rental in self.rentals:
+            for item in rental.item:
+                rented_items.append(item)
+        return rented_items

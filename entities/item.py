@@ -20,7 +20,7 @@ class Item(ABC):
             Oznacza pozycję jako dostępną.
     """
 
-    def __init__(self, id: str, title: str, year: int, available: bool = True):
+    def __init__(self, id: int, title: str, year: int, available: bool = True):
         self.id = id
         self.title = title
         self.year = year

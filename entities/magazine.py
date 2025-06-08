@@ -4,7 +4,7 @@ from entities.item import Item
    Klasa dziedzicząca po klasie Item (pozycja) reprezentująca magazyn.
 
    Atrybuty:
-       id (str): Identyfikator magazynu.
+       id (int): Identyfikator magazynu.
        title (str): Tytuł magazynu.
        year (int): Rok wydania magazynu.
        editor (str): Redaktor magazynu.
@@ -14,7 +14,7 @@ from entities.item import Item
            Zwraca redaktora magazynu.
    """
 class Magazine(Item):
-    def __init__(self, id: str, title: str, year: int, editor: str):
+    def __init__(self, id: int, title: str, year: int, editor: str):
         super().__init__(id, title, year)
         self.editor = editor
 

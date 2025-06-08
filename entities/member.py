@@ -8,7 +8,7 @@ class Member:
     Klasa reprezentująca członka biblioteki.
 
     Atrybuty:
-        member_id (str): Unikalny identyfikator członka biblioteki.
+        member_id (int): Unikalny identyfikator członka biblioteki.
         name (str): Imię członka.
         last_name (str): Nazwisko członka.
         email (str): Adres e-mail członka.
@@ -28,7 +28,7 @@ class Member:
             Zwraca listę wypożyczeń, które są przeterminowane według daty zwrotu.
     """
     def __init__(self,
-                 member_id: str,
+                 member_id: int,
                  name: str,
                  last_name: str,
                  email: str,
@@ -42,7 +42,7 @@ class Member:
 
     def borrow_item(self, item: Item) -> None:
         if item.available:
-            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31), returned = False)
+            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31))
             self.rented_items.append(rental)
         else:
             print("Pozycja jest niedostępna")
