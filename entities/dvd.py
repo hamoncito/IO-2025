@@ -22,7 +22,7 @@ from enum import Enum
 class Genre(Enum):
     ACTION = "Action",
     COMEDY = "Comedy",
-    THRILLER= "Thriller",
+    THRILLER = "Thriller",
     HORROR = "Horror",
     SCIENCE_FICTION= "Science Fiction",
     DOCUMENTARY = "Documentary",
