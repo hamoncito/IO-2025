@@ -11,11 +11,11 @@ from datetime import date, datetime
         returned (bool) = False: Zmienna wskazująca na zwrot przedmiotu
         
     Metody:
-        is_overdue():
+        is_overdue() -> Boolean:
             Sprawdza czy dane wypożyczenie przekroczyło czas możliwego wypożyczenia
-        mark_returned():
+        mark_returned() -> None:
             Metoda, która zwraca informacje, że wskazany przedmiot jest dostępny (Został zwrócony)
-        calculate_return_date():
+        calculate_return_date(daily_fine_for_overdue_items: Float) -> Float:
             Kalkulacja, pozwalająca na ustalenie kary pieniężnej, w przypadku przedmiotu zwróconego za późno.
 """
 
@@ -33,13 +33,13 @@ class Rental:
         else:
             return datetime.now() > self.return_date
 
-    def mark_returned(self):
+    def mark_returned(self) -> None:
         self.returned = True
         self.item.mark_available()
 
-    def calculate_overdue_charge(self, daily_fine_for_overdue_items = 4.0) -> float:
+    def calculate_overdue_charge(self, daily_fine_for_overdue_items) -> float:
         if not self.is_overdue():
             return 0.0
         else:
-            days_over = (date.today() - self.return_date).days
+            days_over = (datetime.now() - self.return_date).days
             return days_over * daily_fine_for_overdue_items

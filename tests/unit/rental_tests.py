@@ -1,5 +1,5 @@
 import unittest
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from entities.book import Book
 from entities.member import Member
 from entities.rental import Rental
@@ -7,19 +7,19 @@ from entities.rental import Rental
 class TestRental(unittest.TestCase):
     def setUp(self):
         self.book = Book(
-            id = "1",
+            id = 1,
             title = "Rok 1984",
             year = 1984,
             author = "George Orwell",
         )
         self.member = Member(
-            member_id = "2",
+            member_id = 2,
             name = "Piotr",
             last_name = "Cerk",
             email = "piotr.cerk@interia.pl",
             rented_items = []
         )
-        self.today = date.today()
+        self.today = datetime.now()
         self.past_date = self.today - timedelta(days=5)
         self.future_date = self.today + timedelta(days=5)
 
