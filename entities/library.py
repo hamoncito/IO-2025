@@ -62,17 +62,6 @@ class Library:
     def add_rental(self, rental) -> None:
         self.rentals.append(rental)
 
-    def get_most_popular_creator(self) -> str:
-        creator_list = []
-        for item in self.items:
-            if not item.available:
-                creator_list.append(item.get_creator())
-        if not creator_list:
-            return "Nie ma najpopularniejszego twórcy"
-        else:
-            counter = Counter(creator_list)
-            return counter.most_common(1)[0][0]
-
     def get_all_available_items(self) -> List[Item]:
         return [item for item in self.items if item.available]
 

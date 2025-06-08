@@ -17,10 +17,9 @@ if __name__ == "__main__":
         print("2. Dodaj członka")
         print("3. Wypożycz książkę")
         print("4. Zwróć książkę")
-        print("5. Pokaż najpopularniejszego twórcę")
-        print("6. Pokaż wszystkich członków, którzy spóźniają się z zwrotem")
-        print("7. Pokaż wszystkie dostępne pozycje")
-        print("8. Ustaw dzienną karę za nieoddanie książki")
+        print("5. Pokaż wszystkich członków, którzy spóźniają się z zwrotem")
+        print("6. Pokaż wszystkie dostępne pozycje")
+        print("7. Ustaw dzienną karę za nieoddanie książki")
 
         user_input = input("Podaj opcję: ")
 
@@ -195,19 +194,15 @@ if __name__ == "__main__":
             if not found:
                 print("Członek nie wypożyczył tej pozycji.")
 
-
         elif user_input == "5":
-            creator = user_library.get_most_popular_creator()
-            print(f"Najpopularniejszy twórca: {creator}")
-        elif user_input == "6":
             members = user_library.get_all_members_with_overdue()
             for member in members:
                 print(f"ID: {member.member_id}, {member.name} {member.last_name}")
-        elif user_input == "7":
+        elif user_input == "6":
             items = user_library.get_all_available_items()
             for item in items:
                 print(f"ID: {item.id}, tytuł: {item.title}")
-        elif user_input == "8":
+        elif user_input == "7":
             fine = float(input("Podaj karę dzienną za nieoddanie książki: "))
             user_library.daily_fine_for_overdue_items = fine
             print(f"Ustawiono karę na {user_library.daily_fine_for_overdue_items}")
