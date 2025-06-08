@@ -180,15 +180,20 @@ if __name__ == "__main__":
             member = next((member for member in user_library.members if member.member_id == user_input_member_id), None)
             item_to_return = next((item for item in user_library.items if item.id == user_input_item_id), None)
 
+            found = False
+
             for rental in member.rented_items:
-                for item in rental.item:
-                    if item == item_to_return:
-                        member.return_item(item)
-                        print(f"{member.name} {member.last_name} zwrócił {item_to_return.title}")
-                        if item.is_overdue():
-                            print(f"{member.name} {member.last_name} ma do zapłacenia karę w wysokości {item.calculate_overdue_charge()}")
-                    else:
-                        print("Członek nie wypożyczył tej pozycji")
+                if rental.item == item_to_return:
+                    member.return_item(rental)
+                    print(f"{member.name} {member.last_name} zwrócił {item_to_return.title}")
+                    if rental.is_overdue():
+                        print(
+                            f"{member.name} {member.last_name} ma do zapłacenia karę w wysokości {rental.item.calculate_overdue_charge()}")
+                    found = True
+                    break
+
+            if not found:
+                print("Członek nie wypożyczył tej pozycji.")
 
 
         elif user_input == "5":

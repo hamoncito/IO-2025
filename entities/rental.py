@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 
 """
     Klasa, która reprezentuje wypożyczenie przedmiotów (książek, magazynów czy DVD) dla pewnych użytkowników.
@@ -31,7 +31,7 @@ class Rental:
         if self.returned:
             return False
         else:
-            return date.today() > self.return_date
+            return datetime.now() > self.return_date
 
     def mark_returned(self):
         self.returned = True
