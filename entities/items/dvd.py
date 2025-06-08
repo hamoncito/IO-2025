@@ -32,8 +32,8 @@ class Dvd(Item):
            get_creator() -> str:
                Zwraca reżysera filmu.
 
-           def get_genre(self) -> str:
-                Zwraca gatunek filmu.
+           def show_movie_length(self) -> str:
+                Zwraca czas filmu w godzinach i minutach
     """
 
     def __init__(self, id: int, title: str, year: int, director: str, genre: Genre, length_in_minutes: int):
