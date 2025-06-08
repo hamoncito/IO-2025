@@ -22,13 +22,13 @@ from datetime import date
             Kalkulacja, pozwalająca na ustalenie kary pieniężnej, w przypadku przedmiotu zwróconego za późno.
 """
 
-class Rental(Item):
-    def __init__(self, item: Item, member: Member, rent_date: date, return_date: date):
+class Rental:
+    def __init__(self, item: Item, member: Member, rent_date: date, return_date: date, returned: bool = False):
         self.item = item
         self.member = member
         self.rent_date = rent_date
         self.return_date = return_date
-        self.returned = False
+        self.returned = returned
 
     def is_overdue(self) -> bool:
         if self.returned:
