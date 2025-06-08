@@ -1,15 +1,15 @@
 from entities.book import Book
 from entities.dvd import Dvd, Genre
 from entities.library import Library
-import itertools
 from entities.magazine import Magazine
 from entities.member import Member
+import itertools
 
-def get_genre_from_input(user_input: str) -> Genre:
+def get_genre_from_input(genre_input: str) -> Genre:
     for genre in Genre:
-        if genre.value.lower() == user_input.strip().lower():
+        if genre.value.lower() == genre_input.strip().lower():
             return genre
-    raise ValueError(f"Nieznany gatunek: {user_input}")
+    raise ValueError(f"Nieznany gatunek: {genre_input}")
 
 if __name__ == "__main__":
     id_iter = itertools.count()

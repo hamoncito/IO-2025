@@ -1,5 +1,5 @@
 import unittest
-from datetime import date, timedelta
+from datetime import timedelta, datetime
 from entities.book import Book
 from entities.member import Member
 from entities.rental import Rental
@@ -7,11 +7,9 @@ from entities.rental import Rental
 
 class TestMember(unittest.TestCase):
     def setUp(self):
-        # Przygotowanie pozycji książkowych
         self.book1 = Book(id="1", title="Wiedźmin", year=1990, author="Sapkowski")
         self.book2 = Book(id="2", title="Lalka", year=1890, author="Bolesław Prus")
 
-        # Przygotowanie członka
         self.member = Member(
             member_id="001",
             name="Adam",
@@ -20,23 +18,20 @@ class TestMember(unittest.TestCase):
             rented_items=[]
         )
 
-        # Przeterminowane wypożyczenie
         self.overdue_rental = Rental(
-            item=self.book1,
-            member=self.member,
-            rent_date=date.today() - timedelta(days=40),
-            return_date=date.today() - timedelta(days=10),
-            returned=False
+            item = self.book1,
+            member = self.member,
+            rent_date = datetime.now() - timedelta(days=40),
+            return_date = datetime.now() - timedelta(days=10),
         )
         self.book1.mark_unavailable()
 
         # Aktualne wypożyczenie
         self.valid_rental = Rental(
-            item=self.book2,
-            member=self.member,
-            rent_date=date.today() - timedelta(days=5),
-            return_date=date.today() + timedelta(days=10),
-            returned=False
+            item = self.book2,
+            member = self.member,
+            rent_date = datetime.now() - timedelta(days=5),
+            return_date = datetime.now() + timedelta(days=10),
         )
         self.book2.mark_unavailable()
 

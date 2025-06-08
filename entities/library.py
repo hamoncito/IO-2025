@@ -1,5 +1,4 @@
 from typing import List
-from collections import Counter
 from entities.item import Item
 from entities.member import Member
 from entities.rental import Rental
