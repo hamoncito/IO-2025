@@ -22,11 +22,11 @@ class Library:
         add_item(item: Item) -> None:
             Dodaje nową pozycję do zbiorów biblioteki.
 
-        add_rental(rental: Rental) -> None:
-            Dodaje nowe wypożyczenie do biblioteki.
+        add_rental(member: Member, item: Item) -> None:
+            Dodaje nowe wypożyczenie do biblioteki dla konkretnego użytkownika.
 
-        remove_rental(rental: Rental) -> None:
-            Usuwa wypożyczenie z biblioteki.
+        remove_rental(rental: Rental, member: Member) -> None:
+            Usuwa wypożyczenie z biblioteki dla konkretnego użytkownika.
 
         get_all_available_items() -> List[Item]:
             Zwraca listę pozycji aktualnie dostępnych do wypożyczenia.
@@ -59,7 +59,7 @@ class Library:
     def add_item(self, item) -> None:
         self.items.append(item)
 
-    def add_rental(self, item, member) -> Rental:
+    def add_rental(self, item, member) -> None:
         if item.available:
             rental = Rental(
                 item = item,
@@ -69,7 +69,6 @@ class Library:
             member.rented_items.append(rental)
             self.rentals.append(rental)
             item.available = False
-            return rental
         else:
             raise NameError("Pozycja jest niedostępna")
 
