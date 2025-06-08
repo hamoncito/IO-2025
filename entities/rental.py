@@ -37,7 +37,7 @@ class Rental:
         self.returned = True
         self.item.mark_available()
 
-    def calculate_overdue_charge(self, daily_fine_for_overdue_items) -> float:
+    def calculate_overdue_charge(self, daily_fine_for_overdue_items = 4.0) -> float:
         if not self.is_overdue():
             return 0.0
         else:
