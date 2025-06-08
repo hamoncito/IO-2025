@@ -62,10 +62,10 @@ class Library:
     def add_rental(self, item, member) -> None:
         if item.available:
             rental = Rental(
-                item = item,
-                member = member,
-                rent_date = datetime.now(),
-                return_date = datetime.now() + timedelta(days=31))
+                item=item,
+                member=member,
+                rent_date=datetime.now(),
+                return_date=datetime.now() + timedelta(days=31))
             member.rented_items.append(rental)
             self.rentals.append(rental)
             item.available = False
@@ -78,7 +78,8 @@ class Library:
         else:
             if rental.is_overdue():
                 charge = rental.calculate_overdue_charge()
-                print(f"W związku z opóźnieniem członek biblioteki {member.name} {member.last_name} musi zapłacić {charge} zł!")
+                print(
+                    f"W związku z opóźnieniem członek biblioteki {member.name} {member.last_name} musi zapłacić {charge} zł!")
             rental.mark_returned()
             self.rentals.remove(rental)
             member.rented_items.remove(rental)

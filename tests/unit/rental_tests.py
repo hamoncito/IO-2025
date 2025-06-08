@@ -1,6 +1,6 @@
 import unittest
-from datetime import date, timedelta, datetime
-from entities.book import Book
+from datetime import timedelta, datetime
+from entities.items.book import Book
 from entities.member import Member
 from entities.rental import Rental
 
