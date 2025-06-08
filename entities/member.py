@@ -41,15 +41,21 @@ class Member:
         self.rented_items = rented_items
 
     def borrow_item(self, item: Item) -> None:
-        rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31), returned = False)
-        self.rented_items.append(rental)
+        if item.available:
+            rental = Rental(item, self, rent_date=datetime.now(), return_date=datetime.now()+timedelta(days=31), returned = False)
+            self.rented_items.append(rental)
+        else:
+            print("Pozycja jest niedostępna")
 
     def return_item(self, rental: Rental) -> None:
-        if rental.is_overdue():
-            charge = rental.calculate_overdue_charge()
-            print(f"W związku z opóźnieniem członek biblioteki {self.name} {self.last_name} musi zapłacić {charge} zł!")
-        rental.mark_returned()
-        self.rented_items.remove(rental)
+        if rental.returned:
+            print("Pozycja została już zwrócona")
+        else:
+            if rental.is_overdue():
+                charge = rental.calculate_overdue_charge()
+                print(f"W związku z opóźnieniem członek biblioteki {self.name} {self.last_name} musi zapłacić {charge} zł!")
+            rental.mark_returned()
+            self.rented_items.remove(rental)
 
     def get_overdue_rentals(self) -> List[Rental]:
         return [rental for rental in self.rented_items if rental.is_overdue()]
