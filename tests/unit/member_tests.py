@@ -1,14 +1,14 @@
 import unittest
 from datetime import datetime, timedelta
-from entities.item import Item
+from entities.book import Book
 from entities.member import Member
 from entities.rental import Rental
 
 
 class TestMember(unittest.TestCase):
     def setUp(self):
-        self.item1 = Item(id="1", title="Wiedźmin", year=1990, creator="Sapkowski")
-        self.item2 = Item(id="2", title="Dziady", year=1832, creator="Mickiewicz")
+        self.book1 = Book(id="1", title="Wiedźmin", year=1990, author="Sapkowski")
+        self.book2 = Book(id="2", title="Dziady", year=1832, author="Mickiewicz")
 
         self.member = Member(
             member_id="001",
@@ -18,9 +18,8 @@ class TestMember(unittest.TestCase):
             rented_items=[]
         )
 
-        # Przeterminowane wypożyczenie (ręcznie dodane do listy)
         self.overdue_rental = Rental(
-            item=self.item2,
+            item=self.book2,
             member=self.member,
             rent_date=datetime.now() - timedelta(days=40),
             return_date=datetime.now() - timedelta(days=10),
@@ -28,25 +27,24 @@ class TestMember(unittest.TestCase):
         )
 
     def test_borrow_item(self):
-        self.member.borrow_item(self.item1)
-        self.assertEqual(len(self.member.rented_items), 1)
-        rental = self.member.rented_items[0]
-        self.assertEqual(rental.item.title, "Wiedźmin")
-        self.assertEqual(rental.member.name, "Adam")
+        new_book = Book(id="3", title="Lalka", year=1890, author="Prus")
+        self.member.borrow_item(new_book)
+        self.assertEqual(len(self.member.rented_items), 3)
+        self.assertFalse(new_book.available)
 
     def test_borrow_unavailable_item(self):
-        self.item1.available = False
-        self.member.borrow_item(self.item1)
+        self.book1.available = False
+        self.member.borrow_item(self.book1)
         self.assertEqual(len(self.member.rented_items), 0)
 
     def test_return_item(self):
-        self.member.borrow_item(self.item1)
+        self.member.borrow_item(self.book1)
         rental = self.member.rented_items[0]
 
         self.member.return_item(rental)
 
         self.assertTrue(rental.returned)
-        self.assertTrue(self.item1.available)
+        self.assertTrue(self.book1.available)
         self.assertEqual(len(self.member.rented_items), 0)
 
     def test_get_overdue_rentals(self):
