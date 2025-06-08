@@ -132,13 +132,12 @@ if __name__ == "__main__":
 
             user_library.add_member(member)
 
-            print(f"Pomyślnie dodano członka:"
-                  f"ID: {member.member_id}"
-                  f"Imię: '{name}'"
-                  f"Nazwisko: '{lastname}'"
-                  f"Email: {email}",
-                  "Członek nie wypożyczył żadnych książek"
-                  )
+            print(f"Pomyślnie dodano członka:")
+            print(f"ID: {member.member_id}")
+            print(f"Imię: '{name}'")
+            print(f"Nazwisko: '{lastname}'")
+            print(f"Email: {email}")
+            print("Członek nie wypożyczył żadnych książek")
 
         elif user_input == "3":
             print("\nJaki członek wypożycza książkę? Podaj ID")
@@ -153,6 +152,8 @@ if __name__ == "__main__":
 
             user_input_item_id = int(input("Podaj ID pozycji: "))
 
+            if user_input_item_id > len(user_library.items) or user_input_member_id > len(user_library.members):
+                raise ValueError("Podano niepoprawne ID")
             member = user_library.members[user_input_member_id]
             item = user_library.items[user_input_item_id]
 
