@@ -25,6 +25,7 @@ if __name__ == "__main__":
         print("5. Pokaż wszystkich członków, którzy spóźniają się z zwrotem")
         print("6. Pokaż wszystkie dostępne pozycje")
         print("7. Ustaw dzienną karę za nieoddanie książki")
+        print("8. Wyświetl wszystkie wypożyczenia")
 
         user_input = input("Podaj opcję: ")
 
@@ -211,5 +212,9 @@ if __name__ == "__main__":
             fine = float(input("Podaj karę dzienną za nieoddanie książki: "))
             user_library.daily_fine_for_overdue_items = fine
             print(f"Ustawiono karę na {user_library.daily_fine_for_overdue_items}")
+        elif user_input == "8":
+            #items = user_library.get_all_rented_items()
+            for rental in user_library.rentals:
+                print(f"Wypożyczony przedmiot: {rental.item.title} Data wypożyczenia: {rental.rent_date} Data Oddania: {rental.return_date} Wypożyczone przez: {rental.member.name} {rental.member.last_name}")
         else:
             raise ValueError("Niepoprawna wartość")
