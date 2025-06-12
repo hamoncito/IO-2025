@@ -41,6 +41,8 @@ class TestLibrary(unittest.TestCase):
         self.assertFalse(self.book1.available)
         self.assertEqual(len(self.library.rentals), 1)
         self.assertEqual(len(self.member1.rented_items), 1)
+        rental = self.library.rentals[0]
+        self.assertEqual(rental.item, self.book1)
 
     def test_remove_rental(self):
         self.library.add_rental(self.book1, self.member1)
@@ -49,6 +51,7 @@ class TestLibrary(unittest.TestCase):
         self.assertTrue(rental.returned)
         self.assertNotIn(rental, self.library.rentals)
         self.assertNotIn(rental, self.member1.rented_items)
+        self.assertTrue(self.book1.available)
 
     def test_get_all_available_items(self):
         self.library.add_rental(self.book1, self.member1)
