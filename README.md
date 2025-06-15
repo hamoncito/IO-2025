@@ -59,13 +59,13 @@ Projekt opiera się na standardowej bibliotece Pythona. Wykorzystywane moduły t
 Pracownik biblioteki rejestruje nowych członków, dodaje nowe książki oraz wypożycza pozycje użytkownikom. Dzięki klasie `Library`, cały proces przebiega z zachowaniem kontroli dostępności pozycji oraz powiązania ich z członkami.
 
 ### Scenariusz 2: Monitorowanie zaległości i naliczanie kar
-Na koniec dnia bibliotekarz wywołuje metodę `get_overdue_rentals`, aby uzyskać listę wypożyczeń po terminie. Na podstawie długości opóźnienia i ustawionej stawki dziennej system nalicza odpowiednie kary i informuje użytkownika podczas zwrotu.
+Na koniec dnia bibliotekarz wywołuje metodę sprawdzającą członków z zaległościami, aby uzyskać listę wypożyczeń po terminie. Na podstawie długości opóźnienia i ustawionej stawki dziennej system nalicza odpowiednie kary i informuje użytkownika podczas zwrotu.
 
 ### Scenariusz 3: Kontrola użytkowników
 Bibliotekarz analizuje aktywność członka: jakie pozycje są obecnie przez niego wypożyczone, czy posiada zaległości. Klasa `Member` pozwala wygodnie zarządzać wypożyczeniami danego użytkownika i śledzić przekroczenia terminów.
 
 ### Scenariusz 4: Generowanie raportu stanu zasobów
-System może w każdej chwili zwrócić listę wszystkich dostępnych pozycji (`get_all_available_items`) oraz historii wszystkich wypożyczeń (`get_all_rentals`). Dane te mogą zostać użyte do tworzenia miesięcznych raportów bibliotecznych.
+System może w każdej chwili zwrócić listę wszystkich dostępnych pozycji oraz historii wszystkich wypożyczeń. Dane te mogą zostać użyte do tworzenia miesięcznych raportów bibliotecznych.
 
 ## Licencja
 Projekt edukacyjny. Do użytku dydaktycznego oraz jako baza do rozbudowy i dalszego rozwoju.
